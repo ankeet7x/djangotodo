@@ -7,7 +7,7 @@
 <body>
 	<p>
 		{% for data in datas %}
-			<p> {{data.title}} </p>
+			<p> {{data.title}} - {{data.description}}</p>
 		{% endfor %}
 
 		<form action="http://127.0.0.1:8000/addtodo/">
