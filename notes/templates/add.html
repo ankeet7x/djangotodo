@@ -5,13 +5,13 @@
 </head>
 <body>
 	
-	<form>
-		<label for="fname">Title</label><br>
-		<input type="text" max_length = "100" id="fname" name="fname"><br>
-		 <label for="lname">Description</label><br>
-		 <input type="text" id="lname" name="lname" width = "10" height = "40">
+	<form method = "POST" class = "post-form" >
+		{% csrf_token %}
+		{{ form.as_p}}
+	<button type= "submit">Add to do</button>	
 	</form>
-	<button type= "submit">Add to do</button>
+	
+		
 	
 
 </body>

@@ -4,7 +4,7 @@ from .models import ToDo
 import json
 # from rest_framework import serializers
 # from django.core import serializers
-# from .forms import ToDoForm
+from .forms import ToDoForm
 
 
 # Create your views here.
@@ -15,4 +15,5 @@ def todopage(request):
 	return render(request, 'home.html', {'datas': datas})
 
 def addtodo(request):
-	return render(request, 'add.html')
+	form = ToDoForm()
+	return render(request, 'add.html', {'form': form})

@@ -1,8 +1,7 @@
 from django import forms
+from .models import ToDo
 
-class ToDoForm(forms.Form):
-	titleText = forms.CharField(max_length = 100)
-	descText = forms.CharField(max_length = 500)
-
-	def __str__(self):
-		return self.titleText
+class ToDoForm(forms.ModelForm):
+	class Meta:
+		model = ToDo
+		fields = "__all__"
