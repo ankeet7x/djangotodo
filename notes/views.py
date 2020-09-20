@@ -3,5 +3,8 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def index(request):
-	return HttpResponse('hello todo')
+def todopage(request):
+	return render(request, 'home.html')
+
+def addtodo(request):
+	return render(request, 'add.html')
