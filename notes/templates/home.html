@@ -7,7 +7,7 @@
 <body>
 	<p>
 		{% for data in datas %}
-			<p> {{data.title}} - {{data.description}}</p>
+			<p> {{data.title}} - {{data.description}}  <a href="{% url 'delete' data.id %}" >Delete</a></p>
 		{% endfor %}
 
 		<form action="http://127.0.0.1:8000/addtodo/">

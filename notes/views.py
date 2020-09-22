@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import ToDo
 from .forms import ToDoForm
-
+from django.contrib import messages
 
 
 # Create your views here.
@@ -29,3 +29,8 @@ def addtodo(request):
 	# form = ToDoForm()	
 	# return render(request, 'add.html', {'form': form})
 
+
+def delete(request, id):
+	item = get_object_or_404(ToDo, pk=id)
+	item.delete()
+	return redirect('todo-page')
