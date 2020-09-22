@@ -1,11 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import ToDo
-import json
-# from rest_framework import serializers
-# from django.core import serializers
 from .forms import ToDoForm
-from django.views.decorators.http import require_POST
+
 
 
 # Create your views here.
@@ -19,12 +16,16 @@ def todopage(request):
 
 def addtodo(request):
 	if request.method == 'POST':
-		form = ToDoForm(title = title, description = desc)
-		title = request.POST.get("title")
-		desc = request.POST.get("description")
-		# form = ToDoForm(request.POST)
-		
-		form.save()
-		
-	return render(request, 'add.html', {'form': form})
+		form = ToDoForm(request.POST)
+		if form.is_valid():
+			data = form.save(commit= False)
+			data.save()
+			return redirect('todo-page',)
+
+	else:
+		form = ToDoForm()
+		return render(request, 'add.html', {'form': form})
+
+	# form = ToDoForm()	
+	# return render(request, 'add.html', {'form': form})
 
